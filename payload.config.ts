@@ -55,6 +55,9 @@ export default buildConfig({
           type: 'richText',
         },
       ],
+      access: {
+        read: () => true,
+      }
     },
     {
       slug: 'media',
@@ -114,4 +117,5 @@ export default buildConfig({
   // This is temporary - we may make an adapter pattern
   // for this before reaching 3.0 stable
   sharp,
+  // serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
 })
