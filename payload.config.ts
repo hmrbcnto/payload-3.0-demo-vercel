@@ -27,6 +27,12 @@ import { fileURLToPath } from 'url'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+const afterChangeHook = async () => {
+  const response = await fetch('https://main.lucky-thunder-f868.pages.dev/api/revalidate?path=/', {
+    method: 'GET',
+  })
+}
+
 export default buildConfig({
   //editor: slateEditor({}),
   editor: lexicalEditor(),
@@ -57,6 +63,9 @@ export default buildConfig({
       ],
       access: {
         read: () => true,
+      },
+      hooks: {
+        afterChange: [afterChangeHook],
       }
     },
     {
